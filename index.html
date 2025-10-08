@@ -5,7 +5,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TREND CURVES - Moda Plus Size Sofisticada</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter','Helvetica Neue',Arial,sans-serif;background:#fafbfc;color:#1a1a1a;line-height:1.6}header{background:rgba(255,255,255,0.98);backdrop-filter:blur(10px);border-bottom:1px solid #e8e8e8;padding:1.2rem 0;position:sticky;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,0.03)}nav{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 3rem}.logo{font-size:1.6rem;font-weight:700;letter-spacing:1px;color:#2d2d2d;font-style:italic}.nav-links{display:flex;gap:2.5rem;list-style:none}.nav-links a{color:#4a4a4a;text-decoration:none;font-weight:500;font-size:0.95rem;transition:all 0.3s;letter-spacing:0.3px}.nav-links a:hover{color:#c9a36a}.hero{position:relative;height:85vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),url('https://images.unsplash.com/photo-1583415032343-39e47249f1f4?w=1600&h=900&fit=crop') center/cover;color:white;text-align:center;overflow:hidden}.hero-content{max-width:900px;padding:0 2rem;position:relative;z-index:2}.hero h1{font-size:4rem;margin-bottom:1.5rem;font-weight:300;letter-spacing:3px;animation:fadeInUp 1s ease}.hero p{font-size:1.4rem;margin-bottom:2.5rem;font-weight:300;line-height:1.8;animation:fadeInUp 1s ease 0.2s backwards;max-width:700px;margin-left:auto;margin-right:auto}.cta-button{display:inline-block;background:#c9a36a;color:white;padding:1.1rem 3.5rem;border-radius:2px;text-decoration:none;font-weight:500;font-size:0.95rem;letter-spacing:1px;transition:all 0.3s;text-transform:uppercase;animation:fadeInUp 1s ease 0.4s backwards}.cta-button:hover{background:#b8924f;transform:translateY(-2px);box-shadow:0 10px 30px rgba(201,163,106,0.3)}@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}.section{max-width:1400px;margin:0 auto;padding:6rem 3rem}.section-header{text-align:center;margin-bottom:4rem}.section-title{font-size:2.8rem;font-weight:300;color:#2d2d2d;margin-bottom:1rem;letter-spacing:1px}.section-subtitle{font-size:1.1rem;color:#777;font-weight:300;max-width:600px;margin:0 auto}.category-section{margin-bottom:5rem}.category-title{font-size:2rem;font-weight:400;color:#2d2d2d;margin-bottom:2.5rem;padding-bottom:1rem;border-bottom:1px solid #e8e8e8;letter-spacing:0.5px}.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2.5rem}.product-card{background:white;border-radius:3px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,0.06);transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}.product-card:hover{transform:translateY(-8px);box-shadow:0 12px 35px rgba(0,0,0,0.12)}.product-image{width:100%;height:400px;overflow:hidden;background:#f5f5f5}.product-image img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.4,0,0.2,1)}.product-card:hover .product-image img{transform:scale(1.08)}.product-info{padding:2rem}.product-info h4{font-size:1.2rem;margin-bottom:0.8rem;color:#2d2d2d;font-weight:500}.product-description{color:#777;font-size:0.95rem;margin-bottom:1.5rem;line-height:1.6}.product-price{font-size:1.6rem;color:#c9a36a;font-weight:500;margin-bottom:1.5rem}.colors-container{display:flex;gap:0.5rem;margin-bottom:1rem}.color-circle{width:20px;height:20px;border-radius:50%;border:1px solid #ccc}.sizes-section{background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);padding:5rem 3rem;text-align:center}.sizes-container{max-width:1200px;margin:0 auto}.sizes-grid{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:3rem}.size-badge{background:white;padding:1.2rem 2.5rem;border-radius:2px;font-weight:500;color:#2d2d2d;box-shadow:0 2px 10px rgba(0,0,0,0.06);transition:all 0.3s;font-size:1.1rem;letter-spacing:0.5px}.size-badge:hover{background:#c9a36a;color:white;transform:translateY(-3px);box-shadow:0 5px 20px rgba(201,163,106,0.3)}footer{background:#2d2d2d;color:white;padding:4rem 3rem 2rem}.footer-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:3rem;margin-bottom:3rem}.footer-section h3{margin-bottom:1.5rem;font-size:1.1rem;font-weight:500;letter-spacing:0.5px}.footer-section p,.footer-section a{color:rgba(255,255,255,0.7);text-decoration:none;line-height:2;display:block;font-size:0.95rem;transition:color 0.3s}.footer-section a:hover{color:#c9a36a}.footer-bottom{text-align:center;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);font-size:0.9rem}@media(max-width:768px){.hero h1{font-size:2.5rem}.hero p{font-size:1.1rem}nav{padding:0 1.5rem}.nav-links{gap:1.5rem;font-size:0.85rem}.section{padding:4rem 1.5rem}.product-grid{grid-template-columns:1fr}}
+/* RESET E ESTILOS GERAIS */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Inter', Arial, sans-serif; background:#fafbfc; color:#1a1a1a; line-height:1.6; }
+header { background: rgba(255,255,255,0.98); backdrop-filter:blur(10px); border-bottom:1px solid #e8e8e8; padding:1.2rem 0; position:sticky; top:0; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.03);}
+nav { max-width:1400px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding:0 3rem;}
+.logo { font-size:1.6rem; font-weight:700; letter-spacing:1px; color:#2d2d2d; font-style:italic;}
+.nav-links { display:flex; gap:2.5rem; list-style:none;}
+.nav-links a { color:#4a4a4a; text-decoration:none; font-weight:500; font-size:0.95rem; transition:all 0.3s; letter-spacing:0.3px;}
+.nav-links a:hover { color:#c9a36a;}
+.hero { position:relative; height:85vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1583415032343-39e47249f1f4?w=1600&h=900&fit=crop') center/cover; color:white; text-align:center; overflow:hidden;}
+.hero-content { max-width:900px; padding:0 2rem; position:relative; z-index:2;}
+.hero h1 { font-size:4rem; margin-bottom:1.5rem; font-weight:300; letter-spacing:3px; animation:fadeInUp 1s ease;}
+.hero p { font-size:1.4rem; margin-bottom:2.5rem; font-weight:300; line-height:1.8; animation:fadeInUp 1s ease 0.2s backwards; max-width:700px; margin-left:auto; margin-right:auto;}
+.cta-button { display:inline-block; background:#c9a36a; color:white; padding:1.1rem 3.5rem; border-radius:2px; text-decoration:none; font-weight:500; font-size:0.95rem; letter-spacing:1px; transition:all 0.3s; text-transform:uppercase; animation:fadeInUp 1s ease 0.4s backwards;}
+.cta-button:hover { background:#b8924f; transform:translateY(-2px); box-shadow:0 10px 30px rgba(201,163,106,0.3);}
+@keyframes fadeInUp { from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);} }
+
+.section { max-width:1400px; margin:0 auto; padding:6rem 3rem; }
+.section-header { text-align:center; margin-bottom:4rem; }
+.section-title { font-size:2.8rem; font-weight:300; color:#2d2d2d; margin-bottom:1rem; letter-spacing:1px;}
+.section-subtitle { font-size:1.1rem; color:#777; font-weight:300; max-width:600px; margin:0 auto;}
+.category-section { margin-bottom:5rem; }
+.category-title { font-size:2rem; font-weight:400; color:#2d2d2d; margin-bottom:2.5rem; padding-bottom:1rem; border-bottom:1px solid #e8e8e8; letter-spacing:0.5px; }
+.product-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2.5rem; }
+.product-card { background:white; border-radius:3px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.06); transition:all 0.4s cubic-bezier(0.4,0,0.2,1);}
+.product-card:hover { transform:translateY(-8px); box-shadow:0 12px 35px rgba(0,0,0,0.12);}
+.product-image { width:100%; height:400px; overflow:hidden; background:#f5f5f5;}
+.product-image img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);}
+.product-card:hover .product-image img { transform:scale(1.08);}
+.product-info { padding:2rem; }
+.product-info h4 { font-size:1.2rem; margin-bottom:0.8rem; color:#2d2d2d; font-weight:500; }
+.product-description { color:#777; font-size:0.95rem; margin-bottom:1.5rem; line-height:1.6;}
+.product-price { font-size:1.6rem; color:#c9a36a; font-weight:500; margin-bottom:1.5rem; }
+.size-options { display:flex; gap:0.5rem; margin-bottom:1rem; }
+.size-options span { padding:0.5rem 0.8rem; border:1px solid #c9a36a; border-radius:2px; font-size:0.9rem; cursor:pointer; transition:all 0.2s;}
+.size-options span:hover { background:#c9a36a; color:white; }
+.color-options { display:flex; gap:0.5rem; margin-bottom:1rem; }
+.color-options span { width:20px; height:20px; border-radius:50%; cursor:pointer; border:1px solid #ccc; }
+.buy-button { width:100%; background:#2d2d2d; color:white; border:none; padding:1rem; border-radius:2px; font-size:0.9rem; font-weight:500; cursor:pointer; transition:all 0.3s; text-transform:uppercase; letter-spacing:1px; }
+.buy-button:hover { background:#c9a36a; }
+
+footer { background:#2d2d2d; color:white; padding:4rem 3rem 2rem; }
+.footer-content { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:3rem; margin-bottom:3rem; }
+.footer-section h3 { margin-bottom:1.5rem; font-size:1.1rem; font-weight:500; letter-spacing:0.5px; }
+.footer-section p, .footer-section a { color:rgba(255,255,255,0.7); text-decoration:none; line-height:2; display:block; font-size:0.95rem; transition:color 0.3s; }
+.footer-section a:hover { color:#c9a36a; }
+.footer-bottom { text-align:center; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.5); font-size:0.9rem; }
+
+@media(max-width:768px){
+.hero h1{ font-size:2.5rem;}
+.hero p{ font-size:1.1rem;}
+nav{ padding:0 1.5rem;}
+.nav-links{ gap:1.5rem; font-size:0.85rem;}
+.section{ padding:4rem 1.5rem;}
+.product-grid{ grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -40,58 +95,82 @@
 <div class="product-grid">
 
 <div class="product-card">
-<div class="product-image"><img src="https://fatimaalvesmodafitness.com.br/wp-content/uploads/2020/06/Imagem-do-WhatsApp-de-2023-03-04-as-17.54.351.jpg" alt="Power Flex"></div>
-<div class="product-info">
-<h4>Conjunto Power Flex</h4>
-<p class="product-description">Legging de alta compressão + top com bojo removível</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#000000"></div>
-<div class="color-circle" style="background:#666666"></div>
-<div class="color-circle" style="background:#999999"></div>
+<div class="product-image">
+<img src="https://fatimaalvesmodafitness.com.br/wp-content/uploads/2020/06/Imagem-do-WhatsApp-de-2023-03-04-as-17.54.351.jpg" alt="Power Flex">
 </div>
+<div class="product-info">
+<h4>Power Flex</h4>
+<p class="product-description">Legging de alta compressão + top com bojo removível</p>
 <div class="product-price">R$ 189,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<div class="color-options">
+<span style="background:#000;"></span>
+<span style="background:#555;"></span>
+<span style="background:#c9a36a;"></span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
 <div class="product-card">
-<div class="product-image"><img src="https://www.activetruth.com.au/cdn/shop/products/essential-full-length-high-waisted-gym-tights-black-3XL-front.jpg?v=1756717768" alt="Legging Essential Black"></div>
+<div class="product-image">
+<img src="https://www.activetruth.com.au/cdn/shop/products/essential-full-length-high-waisted-gym-tights-black-3XL-front.jpg?v=1756717768" alt="Legging Essential Black">
+</div>
 <div class="product-info">
 <h4>Legging Essential Black</h4>
 <p class="product-description">Tecnologia anti-celulite e compressão modeladora</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#000000"></div>
-<div class="color-circle" style="background:#333333"></div>
-<div class="color-circle" style="background:#666666"></div>
-</div>
 <div class="product-price">R$ 149,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<div class="color-options">
+<span style="background:#000;"></span>
+<span style="background:#333;"></span>
+<span style="background:#777;"></span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
 <div class="product-card">
-<div class="product-image"><img src="https://www.havan.com.br/media/catalog/product/cache/73a52df140c4d19dbec2b6c485ea6a50/t/o/top-plus-size-com-bojo-e-recortes-scream_388755_1.webp" alt="Top Performance Pro"></div>
+<div class="product-image">
+<img src="https://www.havan.com.br/media/catalog/product/cache/73a52df140c4d19dbec2b6c485ea6a50/t/o/top-plus-size-com-bojo-e-recortes-scream_388755_1.webp" alt="Top Performance Pro">
+</div>
 <div class="product-info">
 <h4>Top Performance Pro</h4>
 <p class="product-description">Sustentação máxima com design minimalista</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#ff0000"></div>
-<div class="color-circle" style="background:#00ff00"></div>
-<div class="color-circle" style="background:#0000ff"></div>
-</div>
 <div class="product-price">R$ 119,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<div class="color-options">
+<span style="background:#fff;"></span>
+<span style="background:#000;"></span>
+<span style="background:#c9a36a;"></span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
 <div class="product-card">
-<div class="product-image"><img src="https://acdn-us.mitiendanube.com/stores/005/200/265/products/gih_1356-5ae0d99b2cde31c22a17303050099822-1024-1024.jpeg" alt="Macaquinho Active"></div>
+<div class="product-image">
+<img src="https://acdn-us.mitiendanube.com/stores/005/200/265/products/gih_1356-5ae0d99b2cde31c22a17303050099822-1024-1024.jpeg" alt="Macaquinho Active">
+</div>
 <div class="product-info">
 <h4>Macaquinho Active</h4>
 <p class="product-description">Peça única com recortes estratégicos</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#ff69b4"></div>
-<div class="color-circle" style="background:#ff1493"></div>
-<div class="color-circle" style="background:#c71585"></div>
-</div>
 <div class="product-price">R$ 169,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<div class="color-options">
+<span style="background:#000;"></span>
+<span style="background:#333;"></span>
+<span style="background:#999;"></span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
@@ -102,58 +181,82 @@
 <div class="product-grid">
 
 <div class="product-card">
-<div class="product-image"><img src="https://i.pinimg.com/564x/4e/28/72/4e2872c8e372b3c2ee27109c3c5b9f9f.jpg" alt="Biquíni Tropical Elegance"></div>
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1582639590011-f5a8416d1101?w=600&h=800&fit=crop" alt="Biquíni Tropical Elegance">
+</div>
 <div class="product-info">
 <h4>Biquíni Tropical Elegance</h4>
 <p class="product-description">Com bojo, alças reguláveis e proteção UV50+</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#ff4500"></div>
-<div class="color-circle" style="background:#ff6347"></div>
-<div class="color-circle" style="background:#ffa500"></div>
-</div>
 <div class="product-price">R$ 179,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<div class="color-options">
+<span style="background:#ff0000;"></span>
+<span style="background:#00ff00;"></span>
+<span style="background:#0000ff;"></span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
 <div class="product-card">
-<div class="product-image"><img src="https://i.pinimg.com/564x/93/bc/f3/93bcf3e3fa3a9b2f2345d3fdfd86b7a0.jpg" alt="Maiô Sophisticated"></div>
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=800&fit=crop" alt="Maiô Sophisticated">
+</div>
 <div class="product-info">
 <h4>Maiô Sophisticated</h4>
 <p class="product-description">Design sofisticado com recortes laterais</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#000080"></div>
-<div class="color-circle" style="background:#00008b"></div>
-<div class="color-circle" style="background:#0000cd"></div>
-</div>
 <div class="product-price">R$ 199,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<div class="color-options">
+<span style="background:#fff;"></span>
+<span style="background:#000;"></span>
+<span style="background:#c9a36a;"></span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
 <div class="product-card">
-<div class="product-image"><img src="https://i.pinimg.com/564x/fd/89/1a/fd891a7f1c3ef45bff05bcb0b52b28fb.jpg" alt="Saída de Praia Luxe"></div>
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1622107787965-b7e0d77e8b0b?w=600&h=800&fit=crop" alt="Saída de Praia Luxe">
+</div>
 <div class="product-info">
 <h4>Saída de Praia Luxe</h4>
 <p class="product-description">Linho premium com bordado artesanal</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#ffffff"></div>
-<div class="color-circle" style="background:#f5f5f5"></div>
-<div class="color-circle" style="background:#dcdcdc"></div>
-</div>
 <div class="product-price">R$ 159,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<div class="color-options">
+<span style="background:#f5f5dc;"></span>
+<span style="background:#d2b48c;"></span>
+<span style="background:#a0522d;"></span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
 <div class="product-card">
-<div class="product-image"><img src="https://i.pinimg.com/564x/8f/0f/1e/8f0f1ee0b0f6a0cfba41d820f9b2f8dc.jpg" alt="Biquíni Hot Pants Chic"></div>
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1581538355880-0a49c891e149?w=600&h=800&fit=crop" alt="Biquíni Hot Pants Chic">
+</div>
 <div class="product-info">
 <h4>Biquíni Hot Pants Chic</h4>
 <p class="product-description">Cintura alta modeladora com estampa exclusiva</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#ff1493"></div>
-<div class="color-circle" style="background:#ff69b4"></div>
-<div class="color-circle" style="background:#c71585"></div>
-</div>
 <div class="product-price">R$ 189,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<div class="color-options">
+<span style="background:#ff69b4;"></span>
+<span style="background:#ff1493;"></span>
+<span style="background:#c71585;"></span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
@@ -165,58 +268,62 @@
 <div class="product-grid">
 
 <div class="product-card">
-<div class="product-image"><img src="https://i.pinimg.com/564x/45/ef/ee/45efee9f3fda1f12a1f53c6cfd4e7b9b.jpg" alt="Vestido Longo Glamour"></div>
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&h=800&fit=crop" alt="Vestido Longo Glamour">
+</div>
 <div class="product-info">
 <h4>Vestido Longo Glamour</h4>
 <p class="product-description">Cetim com fenda e decote elegante</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#000000"></div>
-<div class="color-circle" style="background:#2f4f4f"></div>
-<div class="color-circle" style="background:#696969"></div>
-</div>
 <div class="product-price">R$ 349,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
 <div class="product-card">
-<div class="product-image"><img src="https://i.pinimg.com/564x/d3/2c/90/d32c907edee9477cf55d4721e022d39b.jpg" alt="Vestido Midi Sofisticado"></div>
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&h=800&fit=crop" alt="Vestido Midi Sofisticado">
+</div>
 <div class="product-info">
 <h4>Vestido Midi Sofisticado</h4>
 <p class="product-description">Renda francesa com forro premium</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#ffffff"></div>
-<div class="color-circle" style="background:#f8f8ff"></div>
-<div class="color-circle" style="background:#f5f5f5"></div>
-</div>
 <div class="product-price">R$ 289,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
 <div class="product-card">
-<div class="product-image"><img src="https://i.pinimg.com/564x/22/2d/51/222d515b6d9a7d5fc5cfc3b9c9f1f7e4.jpg" alt="Conjunto Festa Elegance"></div>
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600&h=800&fit=crop" alt="Conjunto Festa Elegance">
+</div>
 <div class="product-info">
 <h4>Conjunto Festa Elegance</h4>
 <p class="product-description">Blusa bordada + saia longa fluida</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#ff0000"></div>
-<div class="color-circle" style="background:#ff4500"></div>
-<div class="color-circle" style="background:#ff6347"></div>
-</div>
 <div class="product-price">R$ 319,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
 <div class="product-card">
-<div class="product-image"><img src="https://i.pinimg.com/564x/6d/4c/8e/6d4c8e7b8f5e8f1b0d2f6f1a1f6f8d1a.jpg" alt="Vestido Cocktail Premium"></div>
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=600&h=800&fit=crop" alt="Vestido Cocktail Premium">
+</div>
 <div class="product-info">
 <h4>Vestido Cocktail Premium</h4>
 <p class="product-description">Mangas bufantes e cintura marcada</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#000080"></div>
-<div class="color-circle" style="background:#0000cd"></div>
-<div class="color-circle" style="background:#00008b"></div>
-</div>
 <div class="product-price">R$ 299,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
@@ -228,123 +335,93 @@
 <div class="product-grid">
 
 <div class="product-card">
-<div class="product-image"><img src="https://i.pinimg.com/564x/7a/91/2c/7a912c5a6f3c8e7a12a5c3e9d1f8c2d5.jpg" alt="Conjunto Casual Chic"></div>
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1564257577-25e6f8e15e0c?w=600&h=800&fit=crop" alt="Conjunto Casual Chic">
+</div>
 <div class="product-info">
 <h4>Conjunto Casual Chic</h4>
 <p class="product-description">Moletom premium + calça jogger</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#808080"></div>
-<div class="color-circle" style="background:#a9a9a9"></div>
-<div class="color-circle" style="background:#d3d3d3"></div>
-</div>
 <div class="product-price">R$ 249,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
 <div class="product-card">
-<div class="product-image"><img src="https://i.pinimg.com/564x/3f/0c/2a/3f0c2a5f6d3b8e1c7a1f3b6d2e4f7c1a.jpg" alt="Vestido Comfort Style"></div>
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&h=800&fit=crop" alt="Vestido Comfort Style">
+</div>
 <div class="product-info">
 <h4>Vestido Comfort Style</h4>
 <p class="product-description">Malha nobre com bolsos laterais</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#ffdab9"></div>
-<div class="color-circle" style="background:#ffe4c4"></div>
-<div class="color-circle" style="background:#ffdead"></div>
-</div>
 <div class="product-price">R$ 169,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
 <div class="product-card">
-<div class="product-image"><img src="https://i.pinimg.com/564x/1c/3d/6e/1c3d6e9f4b8f7a1e3c4d5f6b7a1e2c3f.jpg" alt="Blusa Oversized Linen"></div>
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1578932750355-5eb30ece487a?w=600&h=800&fit=crop" alt="Blusa Oversized Linen">
+</div>
 <div class="product-info">
 <h4>Blusa Oversized Linen</h4>
 <p class="product-description">Linho puro com modelagem ampla</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#f5f5dc"></div>
-<div class="color-circle" style="background:#faf0e6"></div>
-<div class="color-circle" style="background:#fffaf0"></div>
-</div>
 <div class="product-price">R$ 139,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
+</div>
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
 <div class="product-card">
-<div class="product-image"><img src="https://i.pinimg.com/564x/2b/4d/6f/2b4d6f9e8f7a1c3d4e5f6b7a1c2e3d4f.jpg" alt="Calça Jeans Premium"></div>
+<div class="product-image">
+<img src="https://images.unsplash.com/photo-1593032465176-6e7c810ed0f3?w=600&h=800&fit=crop" alt="Calça Jeans Premium">
+</div>
 <div class="product-info">
 <h4>Calça Jeans Premium</h4>
-<p class="product-description">Cintura alta com elastano confortável</p>
-<div class="colors-container">
-<div class="color-circle" style="background:#0000ff"></div>
-<div class="color-circle" style="background:#1e90ff"></div>
-<div class="color-circle" style="background:#4169e1"></div>
+<p class="product-description">Cós alto e elastano que valoriza a silhueta</p>
+<div class="product-price">R$ 189,90</div>
+<div class="size-options">
+<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
 </div>
-<div class="product-price">R$ 219,90</div>
-</div>
-</div>
-
+<button class="buy-button">Adicionar ao Carrinho</button>
 </div>
 </div>
 
-<section class="sizes-section" id="tamanhos">
-<div class="sizes-container">
-<h2 class="section-title">Todos os Tamanhos</h2>
-<p class="section-subtitle">Moda verdadeiramente inclusiva. Nossa grade completa de tamanhos garante que você encontre a peça perfeita</p>
-<div class="sizes-grid">
-<span class="size-badge">42</span>
-<span class="size-badge">44</span>
-<span class="size-badge">46</span>
-<span class="size-badge">48</span>
-<span class="size-badge">50</span>
-<span class="size-badge">52</span>
-<span class="size-badge">54</span>
-<span class="size-badge">56</span>
-<span class="size-badge">58</span>
 </div>
 </div>
+
 </section>
 
-<footer id="contato">
+<footer>
 <div class="footer-content">
 <div class="footer-section">
-<h3>TREND CURVES</h3>
-<p>Moda plus size sofisticada que celebra a beleza autêntica de cada mulher.</p>
+<h3>Sobre Nós</h3>
+<p>Trend Curves é a marca de moda plus size sofisticada que valoriza cada corpo. Nossa missão é vestir mulheres reais com confiança e estilo.</p>
 </div>
 <div class="footer-section">
-<h3>Atendimento</h3>
-<a href="#">Central de Ajuda</a>
-<a href="#">WhatsApp</a>
-<a href="#">Trocas e Devoluções</a>
-<a href="#">Rastreamento</a>
+<h3>Contato</h3>
+<p>Email: contato@trendcurves.com</p>
+<p>Telefone: (11) 98765-4321</p>
+<p>Endereço: Rua das Flores, 123, São Paulo - SP</p>
 </div>
 <div class="footer-section">
-<h3>Institucional</h3>
-<a href="#">Nossa História</a>
-<a href="#">Sustentabilidade</a>
-<a href="#">Guia de Medidas</a>
-<a href="#">Carreiras</a>
-</div>
-<div class="footer-section">
-<h3>Conecte-se</h3>
+<h3>Siga-nos</h3>
 <a href="#">Instagram</a>
 <a href="#">Facebook</a>
 <a href="#">Pinterest</a>
-<a href="#">Newsletter</a>
 </div>
 </div>
 <div class="footer-bottom">
-<p>© 2024 TREND CURVES. Todos os direitos reservados.</p>
+<p>&copy; 2025 Trend Curves. Todos os direitos reservados.</p>
 </div>
 </footer>
 
-<script>
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-anchor.addEventListener('click', function(e) {
-e.preventDefault();
-const target = document.querySelector(this.getAttribute('href'));
-if(target){target.scrollIntoView({behavior:'smooth',block:'start'});}
-});
-});
-</script>
 </body>
 </html>
