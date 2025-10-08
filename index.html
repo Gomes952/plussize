@@ -1,427 +1,1016 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TREND CURVES - Moda Plus Size Sofisticada</title>
-<style>
-/* RESET E ESTILOS GERAIS */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Inter', Arial, sans-serif; background:#fafbfc; color:#1a1a1a; line-height:1.6; }
-header { background: rgba(255,255,255,0.98); backdrop-filter:blur(10px); border-bottom:1px solid #e8e8e8; padding:1.2rem 0; position:sticky; top:0; z-index:1000; box-shadow:0 2px 10px rgba(0,0,0,0.03);}
-nav { max-width:1400px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding:0 3rem;}
-.logo { font-size:1.6rem; font-weight:700; letter-spacing:1px; color:#2d2d2d; font-style:italic;}
-.nav-links { display:flex; gap:2.5rem; list-style:none;}
-.nav-links a { color:#4a4a4a; text-decoration:none; font-weight:500; font-size:0.95rem; transition:all 0.3s; letter-spacing:0.3px;}
-.nav-links a:hover { color:#c9a36a;}
-.hero { position:relative; height:85vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1583415032343-39e47249f1f4?w=1600&h=900&fit=crop') center/cover; color:white; text-align:center; overflow:hidden;}
-.hero-content { max-width:900px; padding:0 2rem; position:relative; z-index:2;}
-.hero h1 { font-size:4rem; margin-bottom:1.5rem; font-weight:300; letter-spacing:3px; animation:fadeInUp 1s ease;}
-.hero p { font-size:1.4rem; margin-bottom:2.5rem; font-weight:300; line-height:1.8; animation:fadeInUp 1s ease 0.2s backwards; max-width:700px; margin-left:auto; margin-right:auto;}
-.cta-button { display:inline-block; background:#c9a36a; color:white; padding:1.1rem 3.5rem; border-radius:2px; text-decoration:none; font-weight:500; font-size:0.95rem; letter-spacing:1px; transition:all 0.3s; text-transform:uppercase; animation:fadeInUp 1s ease 0.4s backwards;}
-.cta-button:hover { background:#b8924f; transform:translateY(-2px); box-shadow:0 10px 30px rgba(201,163,106,0.3);}
-@keyframes fadeInUp { from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);} }
+"use client"
 
-.section { max-width:1400px; margin:0 auto; padding:6rem 3rem; }
-.section-header { text-align:center; margin-bottom:4rem; }
-.section-title { font-size:2.8rem; font-weight:300; color:#2d2d2d; margin-bottom:1rem; letter-spacing:1px;}
-.section-subtitle { font-size:1.1rem; color:#777; font-weight:300; max-width:600px; margin:0 auto;}
-.category-section { margin-bottom:5rem; }
-.category-title { font-size:2rem; font-weight:400; color:#2d2d2d; margin-bottom:2.5rem; padding-bottom:1rem; border-bottom:1px solid #e8e8e8; letter-spacing:0.5px; }
-.product-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:2.5rem; }
-.product-card { background:white; border-radius:3px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.06); transition:all 0.4s cubic-bezier(0.4,0,0.2,1);}
-.product-card:hover { transform:translateY(-8px); box-shadow:0 12px 35px rgba(0,0,0,0.12);}
-.product-image { width:100%; height:400px; overflow:hidden; background:#f5f5f5;}
-.product-image img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);}
-.product-card:hover .product-image img { transform:scale(1.08);}
-.product-info { padding:2rem; }
-.product-info h4 { font-size:1.2rem; margin-bottom:0.8rem; color:#2d2d2d; font-weight:500; }
-.product-description { color:#777; font-size:0.95rem; margin-bottom:1.5rem; line-height:1.6;}
-.product-price { font-size:1.6rem; color:#c9a36a; font-weight:500; margin-bottom:1.5rem; }
-.size-options { display:flex; gap:0.5rem; margin-bottom:1rem; }
-.size-options span { padding:0.5rem 0.8rem; border:1px solid #c9a36a; border-radius:2px; font-size:0.9rem; cursor:pointer; transition:all 0.2s;}
-.size-options span:hover { background:#c9a36a; color:white; }
-.color-options { display:flex; gap:0.5rem; margin-bottom:1rem; }
-.color-options span { width:20px; height:20px; border-radius:50%; cursor:pointer; border:1px solid #ccc; }
-.buy-button { width:100%; background:#2d2d2d; color:white; border:none; padding:1rem; border-radius:2px; font-size:0.9rem; font-weight:500; cursor:pointer; transition:all 0.3s; text-transform:uppercase; letter-spacing:1px; }
-.buy-button:hover { background:#c9a36a; }
+import { useState } from "react"
 
-footer { background:#2d2d2d; color:white; padding:4rem 3rem 2rem; }
-.footer-content { max-width:1400px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:3rem; margin-bottom:3rem; }
-.footer-section h3 { margin-bottom:1.5rem; font-size:1.1rem; font-weight:500; letter-spacing:0.5px; }
-.footer-section p, .footer-section a { color:rgba(255,255,255,0.7); text-decoration:none; line-height:2; display:block; font-size:0.95rem; transition:color 0.3s; }
-.footer-section a:hover { color:#c9a36a; }
-.footer-bottom { text-align:center; padding-top:2rem; border-top:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.5); font-size:0.9rem; }
-
-@media(max-width:768px){
-.hero h1{ font-size:2.5rem;}
-.hero p{ font-size:1.1rem;}
-nav{ padding:0 1.5rem;}
-.nav-links{ gap:1.5rem; font-size:0.85rem;}
-.section{ padding:4rem 1.5rem;}
-.product-grid{ grid-template-columns:1fr;}
+interface Product {
+  id: string
+  name: string
+  description: string
+  price: number
+  image: string
+  images?: string[]
+  sizes: string[]
+  colors: { name: string; hex: string }[]
 }
-</style>
-</head>
-<body>
-<header>
-<nav>
-<div class="logo">TREND CURVES</div>
-<ul class="nav-links">
-<li><a href="#home">Início</a></li>
-<li><a href="#colecoes">Coleções</a></li>
-<li><a href="#tamanhos">Tamanhos</a></li>
-<li><a href="#contato">Contato</a></li>
-</ul>
-</nav>
-</header>
 
-<section class="hero" id="home">
-<div class="hero-content">
-<h1>TREND CURVES</h1>
-<p>Celebre suas curvas com confiança. Você é linda exatamente como é. Moda sofisticada que abraça e valoriza cada corpo, cada história, cada mulher.</p>
-<a href="#colecoes" class="cta-button">Descubra a Coleção</a>
-</div>
-</section>
+const products = {
+  fitness: [
+    {
+      id: "power-flex",
+      name: "Conjunto Power Flex",
+      description: "Legging de alta compressão + top com bojo removível",
+      price: 189.9,
+      image:
+        "https://fatimaalvesmodafitness.com.br/wp-content/uploads/2020/06/Imagem-do-WhatsApp-de-2023-03-04-as-17.54.351.jpg",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Preto", hex: "#000000" },
+        { name: "Vinho", hex: "#722F37" },
+        { name: "Azul Marinho", hex: "#1B2845" },
+      ],
+    },
+    {
+      id: "legging-essential",
+      name: "Legging Essential Black",
+      description: "Tecnologia anti-celulite e compressão modeladora",
+      price: 149.9,
+      image:
+        "https://www.activetruth.com.au/cdn/shop/products/essential-full-length-high-waisted-gym-tights-black-3XL-front.jpg?v=1756717768",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Preto", hex: "#000000" },
+        { name: "Cinza", hex: "#808080" },
+        { name: "Verde Militar", hex: "#4B5320" },
+      ],
+    },
+    {
+      id: "top-performance",
+      name: "Top Performance Pro",
+      description: "Sustentação máxima com design minimalista",
+      price: 119.9,
+      image:
+        "https://www.havan.com.br/media/catalog/product/cache/73a52df140c4d19dbec2b6c485ea6a50/t/o/top-plus-size-com-bojo-e-recortes-scream_388755_1.webp",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Preto", hex: "#000000" },
+        { name: "Rosa", hex: "#FF69B4" },
+        { name: "Roxo", hex: "#8B008B" },
+      ],
+    },
+    {
+      id: "macaquinho-active",
+      name: "Macaquinho Active",
+      description: "Peça única com recortes estratégicos",
+      price: 169.9,
+      image:
+        "https://acdn-us.mitiendanube.com/stores/005/200/265/products/gih_1356-5ae0d99b2cde31c22a17303050099822-1024-1024.jpeg",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Preto", hex: "#000000" },
+        { name: "Azul", hex: "#0066CC" },
+        { name: "Coral", hex: "#FF7F50" },
+      ],
+    },
+  ],
+  praia: [
+    {
+      id: "biquini-tropical",
+      name: "Biquíni Tropical Elegance",
+      description: "Com bojo, alças reguláveis e proteção UV50+",
+      price: 179.9,
+      image:
+        "https://images.tcdn.com.br/img/img_prod/1042862/biquini_jasmine_cafe_1833_1_da477ab2b9a90844476353467c999fea.jpg",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Café", hex: "#6F4E37" },
+        { name: "Coral", hex: "#FF7F50" },
+        { name: "Turquesa", hex: "#40E0D0" },
+      ],
+    },
+    {
+      id: "maio-sophisticated",
+      name: "Maiô Sophisticated",
+      description: "Design sofisticado com recortes laterais",
+      price: 199.9,
+      image: "https://plusesize.com.br/wp-content/uploads/2025/03/1-13.png",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Preto", hex: "#000000" },
+        { name: "Vermelho", hex: "#DC143C" },
+        { name: "Azul Royal", hex: "#4169E1" },
+      ],
+    },
+    {
+      id: "saida-praia",
+      name: "Saída de Praia Luxe",
+      description: "Linho premium com bordado artesanal",
+      price: 159.9,
+      image: "https://usebellavita.com.br/cdn/shop/files/Sa_da_de_praia_com_manga_morcego.webp?v=1742512681&width=1340",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Branco", hex: "#FFFFFF" },
+        { name: "Bege", hex: "#F5F5DC" },
+        { name: "Azul Claro", hex: "#87CEEB" },
+      ],
+    },
+    {
+      id: "biquini-hot-pants",
+      name: "Biquíni Hot Pants Chic",
+      description: "Cintura alta modeladora com estampa exclusiva",
+      price: 189.9,
+      image: "https://cdn.awsli.com.br/600x450/2559/2559495/produto/271014806/25-k54u4aljb4.png",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Floral Rosa", hex: "#FFB6C1" },
+        { name: "Floral Azul", hex: "#6495ED" },
+        { name: "Floral Verde", hex: "#90EE90" },
+      ],
+    },
+  ],
+  festas: [
+    {
+      id: "vestido-longo",
+      name: "Vestido Longo Glamour",
+      description: "Cetim com fenda e decote elegante",
+      price: 349.9,
+      image:
+        "https://www.impressionmodafesta.com.br/wp-content/uploads/2024/05/Vestido-de-Festa-Longo-Plus-Size-Preto-Brilho-1.png",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Preto", hex: "#000000" },
+        { name: "Vinho", hex: "#722F37" },
+        { name: "Dourado", hex: "#FFD700" },
+      ],
+    },
+    {
+      id: "vestido-midi",
+      name: "Vestido Midi Sofisticado",
+      description: "Renda francesa com forro premium",
+      price: 289.9,
+      image: "https://cherrymodas.com/cdn/shop/files/1720709245db5f0213776daebef82c51f28756b36c_1340x.png?v=1725905782",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Rosa", hex: "#FF69B4" },
+        { name: "Azul Marinho", hex: "#1B2845" },
+        { name: "Champagne", hex: "#F7E7CE" },
+      ],
+    },
+    {
+      id: "conjunto-festa",
+      name: "Conjunto Festa Elegance",
+      description: "Blusa bordada + saia longa fluida",
+      price: 319.9,
+      image: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-mcwdg8iw40mq4c",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Preto", hex: "#000000" },
+        { name: "Prata", hex: "#C0C0C0" },
+        { name: "Bordô", hex: "#800020" },
+      ],
+    },
+    {
+      id: "vestido-cocktail",
+      name: "Vestido Cocktail Premium",
+      description: "Mangas bufantes e cintura marcada",
+      price: 299.9,
+      image:
+        "https://images.tcdn.com.br/img/img_prod/1032771/vestido_plus_size_viscolycra_basic_azul_marinho_802_1_1c34f067ffe3439b59f0171ed16dc422.jpg",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Azul Marinho", hex: "#1B2845" },
+        { name: "Vermelho", hex: "#DC143C" },
+        { name: "Verde Esmeralda", hex: "#50C878" },
+      ],
+    },
+  ],
+  natal: [
+    {
+      id: "vestido-natal-veludo",
+      name: "Vestido Natal Veludo Premium",
+      description: "Veludo luxuoso com detalhes em renda, perfeito para a ceia de Natal",
+      price: 379.9,
+      image:
+        "https://ponderada.com.br/cdn/shop/files/vestido-longo-de-festa-plus-size-veludo-natalia-8.jpg?v=1703193350&width=1445",
+      images: [
+        "https://ponderada.com.br/cdn/shop/files/vestido-longo-de-festa-plus-size-veludo-natalia-8.jpg?v=1703193350&width=1445",
+        "https://cdn.dooca.store/151930/products/12396093-1_580x756+fill_ffffff.jpeg?v=1718759550&webp=0",
+        "https://static.ecosweb.com.br/public/produtos/plus-size-feminino/vestido-curto/vestido-plus-size-com-amarracao-amarelo_741914_600_2.jpg",
+      ],
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Vermelho Natal", hex: "#C41E3A" },
+        { name: "Verde Esmeralda", hex: "#50C878" },
+        { name: "Amarelo", hex: "#FFD700" },
+      ],
+    },
+    {
+      id: "conjunto-reveillon",
+      name: "Conjunto Réveillon Elegance",
+      description: "Blusa com brilho + saia midi, ideal para festas de fim de ano",
+      price: 429.9,
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0Ed2rTB5Y7nJ9w1hTTCSB3prWmX2bdMWGvg&s",
+      images: [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0Ed2rTB5Y7nJ9w1hTTCSB3prWmX2bdMWGvg&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQwEwssyciphher176mwoxfzmTxx2_AVAHJQ&s",
+        "https://acdn-us.mitiendanube.com/stores/004/398/651/products/44-f70d5252f79f8d4cda17585420547504-480-0.png",
+      ],
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Branco Réveillon", hex: "#FFFFFF" },
+        { name: "Cinza Claro", hex: "#C0C0C0" },
+        { name: "Bege", hex: "#F5F5DC" },
+      ],
+    },
+    {
+      id: "vestido-paetes-festa",
+      name: "Vestido Festa Paetês Luxo",
+      description: "Paetês premium com forro confortável, brilho garantido",
+      price: 459.9,
+      image: "https://down-br.img.susercontent.com/file/br-11134207-7r98q-lltlnhgh1rg7a6",
+      images: [
+        "https://down-br.img.susercontent.com/file/br-11134207-7r98q-lltlnhgh1rg7a6",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLdS2Gpv2AIvRAREKHjCgNd_7cyn68YFW0iQ&s",
+        "https://a-static.mlcdn.com.br/%7Bw%7Dx%7Bh%7D/vestido-paete-dourado-plus-size-maria-madamme-carmella-cloo/mariamadamme/99e4649c610911ec900a4201ac18503a/0e08ed99721ec81c314c264dad227071.jpeg",
+      ],
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Preto Elegante", hex: "#000000" },
+        { name: "Vermelho Festa", hex: "#DC143C" },
+        { name: "Dourado Luxo", hex: "#FFD700" },
+      ],
+    },
+    {
+      id: "blusa-natal-festiva",
+      name: "Blusa Natal Festiva Bordada",
+      description: "Bordados natalinos delicados com tecido premium",
+      price: 189.9,
+      image:
+        "https://images.tcdn.com.br/img/img_prod/1138140/cropped_plus_size_raquel_vermelho_1314_1_d86f544188159a3280f86bbb5f86a9d4.jpg",
+      images: [
+        "https://images.tcdn.com.br/img/img_prod/1138140/cropped_plus_size_raquel_vermelho_1314_1_d86f544188159a3280f86bbb5f86a9d4.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1d7MEltFRkR34gxirirfOqfyLXeAIPoErXDTbPeVryslz8KLXtEcQWJoHEef0eQk80sY&usqp=CAU",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEcRkFdgid4OdcwXp15XG1f6AyOQtZgoCCuUbmy2NVAUyHw9xTWMhWoqCEWzjmAzhDkAM&usqp=CAU",
+      ],
+      sizes: ["M", "G", "GG", "G1", "G2", "G3"],
+      colors: [
+        { name: "Vermelho Natal", hex: "#C41E3A" },
+        { name: "Verde Pinheiro", hex: "#228B22" },
+        { name: "Branco Neve", hex: "#FFFAFA" },
+      ],
+    },
+    {
+      id: "vestido-longo-reveillon",
+      name: "Vestido Longo Réveillon Chic",
+      description: "Tecido fluido com fenda lateral, elegância máxima",
+      price: 499.9,
+      image: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-ls1h39t7c9izc5",
+      images: [
+        "https://down-br.img.susercontent.com/file/br-11134207-7r98o-ls1h39t7c9izc5",
+        "https://img.ltwebstatic.com/v4/j/pi/2025/06/09/c0/1749433660e01908b503c74b76dd89595a950e727f_thumbnail_405x.webp",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9F973iT_lKNHvpwC7UBIXe_e01BTwuru2GA&s",
+      ],
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Branco Total", hex: "#FFFFFF" },
+        { name: "Cinza Claro", hex: "#C0C0C0" },
+        { name: "Azul Royal", hex: "#4169E1" },
+      ],
+    },
+    {
+      id: "conjunto-veludo-premium",
+      name: "Conjunto Veludo Premium Natal",
+      description: "Blazer + calça em veludo nobre, sofisticação garantida",
+      price: 549.9,
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYs4h7iYFN8hDH_lfTaFLNo8a9fdmrAQRCag&s",
+      images: [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYs4h7iYFN8hDH_lfTaFLNo8a9fdmrAQRCag&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBdEjIBetCKXCzwEqEhWRQSLnv0CKp5S57HZn9pnO15a_G464WxLuwhTz9F1AeTH18cIE&usqp=CAU",
+        "https://thumb.braavo.me/bestsize/0/2444336263.webp",
+      ],
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Vinho Nobre", hex: "#722F37" },
+        { name: "Verde Musgo", hex: "#4B5320" },
+        { name: "Preto Clássico", hex: "#000000" },
+      ],
+    },
+  ],
+  casual: [
+    {
+      id: "conjunto-casual",
+      name: "Conjunto Casual Chic",
+      description: "Moletom premium + calça jogger",
+      price: 249.9,
+      image:
+        "https://image-r.zaxapp.com.br/cdn-cgi/image/w=3840/catalog/product/z/a/zaxSML-70edfc-a1ed55f3-d09a-40e4-bda2-ea429c661e6c.webp",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Cinza", hex: "#808080" },
+        { name: "Preto", hex: "#000000" },
+        { name: "Bege", hex: "#F5F5DC" },
+      ],
+    },
+    {
+      id: "vestido-comfort",
+      name: "Vestido Comfort Style",
+      description: "Malha nobre com bolsos laterais",
+      price: 169.9,
+      image: "https://cdn.dooca.store/49855/products/mg-8710_450x600+fill_ffffff.jpg?v=1729678631&webp=0",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Branco", hex: "#FFFFFF" },
+        { name: "Marinho", hex: "#1B2845" },
+        { name: "Terracota", hex: "#E2725B" },
+      ],
+    },
+    {
+      id: "blusa-oversized",
+      name: "Blusa Oversized Linen",
+      description: "Linho puro com modelagem ampla",
+      price: 139.9,
+      image:
+        "https://s3-sa-east-1.amazonaws.com/paralelo21.img/produto/5589/camiseta-plus-size-feminina-de-algodao-lisa-manga-alongada-ana-5589-large.webp",
+      sizes: ["M", "G", "GG", "G1", "G2", "G3"],
+      colors: [
+        { name: "Branco", hex: "#FFFFFF" },
+        { name: "Bege", hex: "#F5F5DC" },
+        { name: "Azul Claro", hex: "#87CEEB" },
+      ],
+    },
+    {
+      id: "calca-jeans",
+      name: "Calça Jeans Premium",
+      description: "Cintura alta com elastano confortável",
+      price: 219.9,
+      image:
+        "https://static.wixstatic.com/media/6a7390_285f2abe23584c089966cec3938cb7b3~mv2.jpg/v1/fill/w_516,h_516,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/6a7390_285f2abe23584c089966cec3938cb7b3~mv2.jpg",
+      sizes: ["46", "48", "50", "52", "54", "56", "58", "60"],
+      colors: [
+        { name: "Azul Escuro", hex: "#1B2845" },
+        { name: "Azul Médio", hex: "#4169E1" },
+        { name: "Preto", hex: "#000000" },
+      ],
+    },
+  ],
+}
 
-<section class="section" id="colecoes">
-<div class="section-header">
-<h2 class="section-title">Nossas Coleções</h2>
-<p class="section-subtitle">Peças exclusivas e sofisticadas, pensadas para mulheres reais que vivem intensamente cada momento</p>
-</div>
+function ProductCard({ product }: { product: Product }) {
+  const [selectedSize, setSelectedSize] = useState<string>("")
+  const [selectedColor, setSelectedColor] = useState<string>("")
+  const [addedToCart, setAddedToCart] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-<div class="category-section">
-<h3 class="category-title">Fitness & Academia</h3>
-<div class="product-grid">
+  const handleAddToCart = () => {
+    setAddedToCart(true)
+    setTimeout(() => setAddedToCart(false), 2500)
+  }
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://fatimaalvesmodafitness.com.br/wp-content/uploads/2020/06/Imagem-do-WhatsApp-de-2023-03-04-as-17.54.351.jpg" alt="Power Flex">
-</div>
-<div class="product-info">
-<h4>Power Flex</h4>
-<p class="product-description">Legging de alta compressão + top com bojo removível</p>
-<div class="product-price">R$ 189,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<div class="color-options">
-<span style="background:#000;"></span>
-<span style="background:#555;"></span>
-<span style="background:#c9a36a;"></span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+  const productImages = product.images || [product.image]
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://www.activetruth.com.au/cdn/shop/products/essential-full-length-high-waisted-gym-tights-black-3XL-front.jpg?v=1756717768" alt="Legging Essential Black">
-</div>
-<div class="product-info">
-<h4>Legging Essential Black</h4>
-<p class="product-description">Tecnologia anti-celulite e compressão modeladora</p>
-<div class="product-price">R$ 149,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<div class="color-options">
-<span style="background:#000;"></span>
-<span style="background:#333;"></span>
-<span style="background:#777;"></span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+  return (
+    <div className="group bg-white rounded-sm overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.06)] transition-all duration-[400ms] hover:translate-y-[-8px] hover:shadow-[0_12px_35px_rgba(0,0,0,0.12)]">
+      <div className="relative w-full h-[400px] overflow-hidden bg-gray-100">
+        <img
+          src={productImages[currentImageIndex] || "/placeholder.svg"}
+          alt={product.name}
+          className="w-full h-full object-cover transition-transform duration-[600ms] group-hover:scale-[1.08]"
+        />
+        {productImages.length > 1 && (
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+            {productImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  currentImageIndex === index ? "bg-[#c9a36a] w-6" : "bg-white/60 hover:bg-white"
+                }`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="p-8">
+        <h4 className="text-xl mb-3 text-[#2d2d2d] font-medium">{product.name}</h4>
+        <p className="text-[#777] text-[0.95rem] mb-6 leading-relaxed">{product.description}</p>
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://www.havan.com.br/media/catalog/product/cache/73a52df140c4d19dbec2b6c485ea6a50/t/o/top-plus-size-com-bojo-e-recortes-scream_388755_1.webp" alt="Top Performance Pro">
-</div>
-<div class="product-info">
-<h4>Top Performance Pro</h4>
-<p class="product-description">Sustentação máxima com design minimalista</p>
-<div class="product-price">R$ 119,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<div class="color-options">
-<span style="background:#fff;"></span>
-<span style="background:#000;"></span>
-<span style="background:#c9a36a;"></span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+        <div className="mb-6">
+          <p className="text-sm font-medium text-[#2d2d2d] mb-3">Cores disponíveis:</p>
+          <div className="flex gap-2">
+            {product.colors.map((color) => (
+              <button
+                key={color.name}
+                onClick={() => setSelectedColor(color.name)}
+                className={`w-10 h-10 rounded-full border-2 transition-all ${
+                  selectedColor === color.name ? "border-[#c9a36a] scale-110" : "border-gray-300 hover:border-[#c9a36a]"
+                }`}
+                style={{ backgroundColor: color.hex }}
+                title={color.name}
+              />
+            ))}
+          </div>
+        </div>
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://acdn-us.mitiendanube.com/stores/005/200/265/products/gih_1356-5ae0d99b2cde31c22a17303050099822-1024-1024.jpeg" alt="Macaquinho Active">
-</div>
-<div class="product-info">
-<h4>Macaquinho Active</h4>
-<p class="product-description">Peça única com recortes estratégicos</p>
-<div class="product-price">R$ 169,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<div class="color-options">
-<span style="background:#000;"></span>
-<span style="background:#333;"></span>
-<span style="background:#999;"></span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+        <div className="mb-6">
+          <p className="text-sm font-medium text-[#2d2d2d] mb-3">Tamanhos disponíveis:</p>
+          <div className="flex flex-wrap gap-2">
+            {product.sizes.map((size) => (
+              <button
+                key={size}
+                onClick={() => setSelectedSize(size)}
+                className={`px-4 py-2 border rounded-sm text-sm font-medium transition-all ${
+                  selectedSize === size
+                    ? "bg-[#c9a36a] text-white border-[#c9a36a]"
+                    : "bg-white text-[#2d2d2d] border-gray-300 hover:border-[#c9a36a]"
+                }`}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
+        </div>
 
-</div>
-</div>
-<div class="category-section">
-<h3 class="category-title">Moda Praia</h3>
-<div class="product-grid">
+        <div className="text-[1.6rem] text-[#c9a36a] font-medium mb-6">
+          R$ {product.price.toFixed(2).replace(".", ",")}
+        </div>
+        <button
+          onClick={handleAddToCart}
+          className="w-full bg-[#2d2d2d] text-white border-none py-4 rounded-sm text-[0.9rem] font-medium cursor-pointer transition-all uppercase tracking-wider hover:bg-[#c9a36a]"
+          style={addedToCart ? { background: "#c9a36a" } : {}}
+        >
+          {addedToCart ? "✓ Adicionado ao Carrinho" : "Adicionar ao Carrinho"}
+        </button>
+      </div>
+    </div>
+  )
+}
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1582639590011-f5a8416d1101?w=600&h=800&fit=crop" alt="Biquíni Tropical Elegance">
-</div>
-<div class="product-info">
-<h4>Biquíni Tropical Elegance</h4>
-<p class="product-description">Com bojo, alças reguláveis e proteção UV50+</p>
-<div class="product-price">R$ 179,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<div class="color-options">
-<span style="background:#ff0000;"></span>
-<span style="background:#00ff00;"></span>
-<span style="background:#0000ff;"></span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+export default function Home() {
+  const [showReturnsModal, setShowReturnsModal] = useState(false)
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=800&fit=crop" alt="Maiô Sophisticated">
-</div>
-<div class="product-info">
-<h4>Maiô Sophisticated</h4>
-<p class="product-description">Design sofisticado com recortes laterais</p>
-<div class="product-price">R$ 199,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<div class="color-options">
-<span style="background:#fff;"></span>
-<span style="background:#000;"></span>
-<span style="background:#c9a36a;"></span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+  return (
+    <div className="min-h-screen bg-[#fafbfc] text-[#1a1a1a]">
+      {/* Header */}
+      <header className="bg-white/[0.98] backdrop-blur-[10px] border-b border-[#e8e8e8] py-5 sticky top-0 z-[1000] shadow-[0_2px_10px_rgba(0,0,0,0.03)]">
+        <nav className="max-w-[1400px] mx-auto flex justify-between items-center px-12">
+          <div className="text-[1.6rem] font-bold tracking-wider text-[#2d2d2d] italic">TREND CURVES</div>
+          <ul className="flex gap-10 list-none">
+            <li>
+              <a
+                href="#home"
+                className="text-[#4a4a4a] no-underline font-medium text-[0.95rem] tracking-[0.3px] transition-colors hover:text-[#c9a36a]"
+              >
+                Início
+              </a>
+            </li>
+            <li>
+              <a
+                href="#colecoes"
+                className="text-[#4a4a4a] no-underline font-medium text-[0.95rem] tracking-[0.3px] transition-colors hover:text-[#c9a36a]"
+              >
+                Coleções
+              </a>
+            </li>
+            <li>
+              <a
+                href="#tamanhos"
+                className="text-[#4a4a4a] no-underline font-medium text-[0.95rem] tracking-[0.3px] transition-colors hover:text-[#c9a36a]"
+              >
+                Tamanhos
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1622107787965-b7e0d77e8b0b?w=600&h=800&fit=crop" alt="Saída de Praia Luxe">
-</div>
-<div class="product-info">
-<h4>Saída de Praia Luxe</h4>
-<p class="product-description">Linho premium com bordado artesanal</p>
-<div class="product-price">R$ 159,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<div class="color-options">
-<span style="background:#f5f5dc;"></span>
-<span style="background:#d2b48c;"></span>
-<span style="background:#a0522d;"></span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+      {/* Hero */}
+      <section
+        id="home"
+        className="relative h-[85vh] flex items-center justify-center text-white text-center overflow-hidden"
+        style={{
+          background:
+            "linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1583415032343-39e47249f1f4?w=1600&h=900&fit=crop) center/cover",
+        }}
+      >
+        <div className="max-w-[900px] px-8 relative z-[2]">
+          <h1 className="text-[4rem] mb-6 font-light tracking-[3px] animate-[fadeInUp_1s_ease]">TREND CURVES</h1>
+          <p
+            className="text-[1.4rem] mb-10 font-light leading-relaxed max-w-[700px] mx-auto"
+            style={{ animation: "fadeInUp 1s ease 0.2s backwards" }}
+          >
+            Celebre suas curvas com confiança. Você é linda exatamente como é. Moda sofisticada que abraça e valoriza
+            cada corpo, cada história, cada mulher.
+          </p>
+          <a
+            href="#colecoes"
+            className="inline-block bg-[#c9a36a] text-white py-[1.1rem] px-14 rounded-sm no-underline font-medium text-[0.95rem] tracking-wider transition-all uppercase hover:bg-[#b8924f] hover:translate-y-[-2px] hover:shadow-[0_10px_30px_rgba(201,163,106,0.3)]"
+            style={{ animation: "fadeInUp 1s ease 0.4s backwards" }}
+          >
+            Descubra a Coleção
+          </a>
+        </div>
+      </section>
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1581538355880-0a49c891e149?w=600&h=800&fit=crop" alt="Biquíni Hot Pants Chic">
-</div>
-<div class="product-info">
-<h4>Biquíni Hot Pants Chic</h4>
-<p class="product-description">Cintura alta modeladora com estampa exclusiva</p>
-<div class="product-price">R$ 189,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<div class="color-options">
-<span style="background:#ff69b4;"></span>
-<span style="background:#ff1493;"></span>
-<span style="background:#c71585;"></span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+      {/* Products Section */}
+      <section id="colecoes" className="max-w-[1400px] mx-auto py-24 px-12">
+        <div className="text-center mb-16">
+          <h2 className="text-[2.8rem] font-light text-[#2d2d2d] mb-4 tracking-wider">Nossas Coleções</h2>
+          <p className="text-[1.1rem] text-[#777] font-light max-w-[600px] mx-auto">
+            Peças exclusivas e sofisticadas, pensadas para mulheres reais que vivem intensamente cada momento
+          </p>
+        </div>
 
-</div>
-</div>
+        {/* Fitness */}
+        <div className="mb-20">
+          <h3 className="text-[2rem] font-normal text-[#2d2d2d] mb-10 pb-4 border-b border-[#e8e8e8] tracking-[0.5px]">
+            Fitness & Academia
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+            {products.fitness.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
 
-<div class="category-section">
-<h3 class="category-title">Festas & Eventos</h3>
-<div class="product-grid">
+        {/* Praia */}
+        <div className="mb-20">
+          <h3 className="text-[2rem] font-normal text-[#2d2d2d] mb-10 pb-4 border-b border-[#e8e8e8] tracking-[0.5px]">
+            Moda Praia
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+            {products.praia.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&h=800&fit=crop" alt="Vestido Longo Glamour">
-</div>
-<div class="product-info">
-<h4>Vestido Longo Glamour</h4>
-<p class="product-description">Cetim com fenda e decote elegante</p>
-<div class="product-price">R$ 349,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+        {/* Festas */}
+        <div className="mb-20">
+          <h3 className="text-[2rem] font-normal text-[#2d2d2d] mb-10 pb-4 border-b border-[#e8e8e8] tracking-[0.5px]">
+            Festas & Eventos
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+            {products.festas.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&h=800&fit=crop" alt="Vestido Midi Sofisticado">
-</div>
-<div class="product-info">
-<h4>Vestido Midi Sofisticado</h4>
-<p class="product-description">Renda francesa com forro premium</p>
-<div class="product-price">R$ 289,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+        <div className="mb-20">
+          <div className="flex items-center gap-4 mb-10 pb-4 border-b border-[#e8e8e8]">
+            <h3 className="text-[2rem] font-normal text-[#2d2d2d] tracking-[0.5px]">Natal & Fim de Ano</h3>
+            <span className="bg-[#C41E3A] text-white px-4 py-1 rounded-full text-sm font-medium">Coleção Especial</span>
+          </div>
+          <div className="bg-gradient-to-r from-[#C41E3A]/5 to-[#50C878]/5 p-6 rounded-lg mb-10">
+            <p className="text-center text-[#2d2d2d] text-lg">
+              ✨ Brilhe nas festas de fim de ano com nossa coleção exclusiva! Peças sofisticadas para celebrar com
+              estilo ✨
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+            {products.natal.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600&h=800&fit=crop" alt="Conjunto Festa Elegance">
-</div>
-<div class="product-info">
-<h4>Conjunto Festa Elegance</h4>
-<p class="product-description">Blusa bordada + saia longa fluida</p>
-<div class="product-price">R$ 319,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+        {/* Casual */}
+        <div className="mb-20">
+          <h3 className="text-[2rem] font-normal text-[#2d2d2d] mb-10 pb-4 border-b border-[#e8e8e8] tracking-[0.5px]">
+            Casual & Dia a Dia
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+            {products.casual.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=600&h=800&fit=crop" alt="Vestido Cocktail Premium">
-</div>
-<div class="product-info">
-<h4>Vestido Cocktail Premium</h4>
-<p class="product-description">Mangas bufantes e cintura marcada</p>
-<div class="product-price">R$ 299,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+      {/* Sizes Section */}
+      <section id="tamanhos" className="bg-gradient-to-br from-[#f8f9fa] to-[#e9ecef] py-20 px-12 text-center">
+        <div className="max-w-[1200px] mx-auto">
+          <h2 className="text-[2.8rem] font-light text-[#2d2d2d] mb-4 tracking-wider">Todos os Tamanhos</h2>
+          <p className="text-[1.1rem] text-[#777] font-light max-w-[600px] mx-auto mb-12">
+            Moda verdadeiramente inclusiva. Nossa grade completa de tamanhos garante que você encontre a peça perfeita
+          </p>
+          <div className="flex justify-center gap-6 flex-wrap">
+            {["46", "48", "50", "52", "54", "56", "58", "60", "62", "64"].map((size) => (
+              <span
+                key={size}
+                className="bg-white py-5 px-10 rounded-sm font-medium text-[#2d2d2d] shadow-[0_2px_10px_rgba(0,0,0,0.06)] transition-all text-[1.1rem] tracking-[0.5px] hover:bg-[#c9a36a] hover:text-white hover:translate-y-[-3px] hover:shadow-[0_5px_20px_rgba(201,163,106,0.3)]"
+              >
+                {size}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
 
-</div>
-</div>
+      {/* Depoimentos Section */}
+      <section className="max-w-[1400px] mx-auto py-24 px-12">
+        <div className="text-center mb-16">
+          <h2 className="text-[2.8rem] font-light text-[#2d2d2d] mb-4 tracking-wider">O Que Nossas Clientes Dizem</h2>
+          <p className="text-[1.1rem] text-[#777] font-light max-w-[600px] mx-auto">
+            Histórias reais de mulheres que encontraram confiança e estilo
+          </p>
+        </div>
 
-<div class="category-section">
-<h3 class="category-title">Casual & Dia a Dia</h3>
-<div class="product-grid">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="bg-white p-8 rounded-sm shadow-[0_4px_15px_rgba(0,0,0,0.06)] transition-all hover:shadow-[0_8px_25px_rgba(0,0,0,0.1)]">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-[#c9a36a] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                M
+              </div>
+              <div className="ml-4">
+                <h4 className="font-medium text-[#2d2d2d]">Maria Silva</h4>
+                <p className="text-sm text-[#777]">São Paulo, SP</p>
+              </div>
+            </div>
+            <div className="text-[#c9a36a] mb-3">★★★★★</div>
+            <p className="text-[#555] leading-relaxed text-[0.95rem]">
+              "Finalmente encontrei roupas que valorizam minhas curvas! A qualidade é excepcional e o caimento é
+              perfeito. Me sinto linda e confiante."
+            </p>
+          </div>
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1564257577-25e6f8e15e0c?w=600&h=800&fit=crop" alt="Conjunto Casual Chic">
-</div>
-<div class="product-info">
-<h4>Conjunto Casual Chic</h4>
-<p class="product-description">Moletom premium + calça jogger</p>
-<div class="product-price">R$ 249,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+          <div className="bg-white p-8 rounded-sm shadow-[0_4px_15px_rgba(0,0,0,0.06)] transition-all hover:shadow-[0_8px_25px_rgba(0,0,0,0.1)]">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-[#c9a36a] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                J
+              </div>
+              <div className="ml-4">
+                <h4 className="font-medium text-[#2d2d2d]">Juliana Costa</h4>
+                <p className="text-sm text-[#777]">Rio de Janeiro, RJ</p>
+              </div>
+            </div>
+            <div className="text-[#c9a36a] mb-3">★★★★★</div>
+            <p className="text-[#555] leading-relaxed text-[0.95rem]">
+              "A coleção de festas é maravilhosa! Comprei um vestido longo e recebi tantos elogios. A entrega foi rápida
+              e o atendimento impecável."
+            </p>
+          </div>
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=600&h=800&fit=crop" alt="Vestido Comfort Style">
-</div>
-<div class="product-info">
-<h4>Vestido Comfort Style</h4>
-<p class="product-description">Malha nobre com bolsos laterais</p>
-<div class="product-price">R$ 169,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+          <div className="bg-white p-8 rounded-sm shadow-[0_4px_15px_rgba(0,0,0,0.06)] transition-all hover:shadow-[0_8px_25px_rgba(0,0,0,0.1)]">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-[#c9a36a] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                A
+              </div>
+              <div className="ml-4">
+                <h4 className="font-medium text-[#2d2d2d]">Ana Paula</h4>
+                <p className="text-sm text-[#777]">Belo Horizonte, MG</p>
+              </div>
+            </div>
+            <div className="text-[#c9a36a] mb-3">★★★★★</div>
+            <p className="text-[#555] leading-relaxed text-[0.95rem]">
+              "Moda plus size de verdade! Não é só aumentar o tamanho, é pensar no corpo real. As peças são lindas e
+              confortáveis. Virei cliente fiel!"
+            </p>
+          </div>
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1578932750355-5eb30ece487a?w=600&h=800&fit=crop" alt="Blusa Oversized Linen">
-</div>
-<div class="product-info">
-<h4>Blusa Oversized Linen</h4>
-<p class="product-description">Linho puro com modelagem ampla</p>
-<div class="product-price">R$ 139,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+          <div className="bg-white p-8 rounded-sm shadow-[0_4px_15px_rgba(0,0,0,0.06)] transition-all hover:shadow-[0_8px_25px_rgba(0,0,0,0.1)]">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-[#c9a36a] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                C
+              </div>
+              <div className="ml-4">
+                <h4 className="font-medium text-[#2d2d2d]">Carla Mendes</h4>
+                <p className="text-sm text-[#777]">Porto Alegre, RS</p>
+              </div>
+            </div>
+            <div className="text-[#c9a36a] mb-3">★★★★★</div>
+            <p className="text-[#555] leading-relaxed text-[0.95rem]">
+              "Os conjuntos fitness são incríveis! Finalmente posso malhar com roupas bonitas e que não marcam. A
+              compressão é perfeita e o tecido é de alta qualidade."
+            </p>
+          </div>
 
-<div class="product-card">
-<div class="product-image">
-<img src="https://images.unsplash.com/photo-1593032465176-6e7c810ed0f3?w=600&h=800&fit=crop" alt="Calça Jeans Premium">
-</div>
-<div class="product-info">
-<h4>Calça Jeans Premium</h4>
-<p class="product-description">Cós alto e elastano que valoriza a silhueta</p>
-<div class="product-price">R$ 189,90</div>
-<div class="size-options">
-<span>42</span><span>44</span><span>46</span><span>48</span><span>50</span><span>52</span><span>54</span><span>56</span><span>58</span>
-</div>
-<button class="buy-button">Adicionar ao Carrinho</button>
-</div>
-</div>
+          <div className="bg-white p-8 rounded-sm shadow-[0_4px_15px_rgba(0,0,0,0.06)] transition-all hover:shadow-[0_8px_25px_rgba(0,0,0,0.1)]">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-[#c9a36a] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                P
+              </div>
+              <div className="ml-4">
+                <h4 className="font-medium text-[#2d2d2d]">Patrícia Oliveira</h4>
+                <p className="text-sm text-[#777]">Salvador, BA</p>
+              </div>
+            </div>
+            <div className="text-[#c9a36a] mb-3">★★★★★</div>
+            <p className="text-[#555] leading-relaxed text-[0.95rem]">
+              "A moda praia é sensacional! Os biquínis têm sustentação de verdade e são lindos. Me senti segura e
+              elegante na praia. Recomendo muito!"
+            </p>
+          </div>
 
-</div>
-</div>
+          <div className="bg-white p-8 rounded-sm shadow-[0_4px_15px_rgba(0,0,0,0.06)] transition-all hover:shadow-[0_8px_25px_rgba(0,0,0,0.1)]">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-[#c9a36a] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                R
+              </div>
+              <div className="ml-4">
+                <h4 className="font-medium text-[#2d2d2d]">Renata Santos</h4>
+                <p className="text-sm text-[#777]">Recife, PE</p>
+              </div>
+            </div>
+            <div className="text-[#c9a36a] mb-3">★★★★★</div>
+            <p className="text-[#555] leading-relaxed text-[0.95rem]">
+              "Comprei várias peças da linha casual e estou apaixonada! O tecido é macio, o caimento é perfeito e os
+              preços são justos. Voltarei a comprar com certeza!"
+            </p>
+          </div>
+        </div>
+      </section>
 
-</section>
+      {/* CEO/Fundadora Section */}
+      <section className="bg-gradient-to-br from-[#2d2d2d] to-[#1a1a1a] text-white py-24 px-12">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="inline-block bg-[#c9a36a] text-white px-4 py-1 rounded-full text-sm font-medium mb-6">
+                Nossa Fundadora
+              </div>
+              <h2 className="text-[2.5rem] font-light mb-6 tracking-wide leading-tight">
+                Camila Rodrigues
+                <span className="block text-[1.2rem] text-white/70 mt-2">CEO & Fundadora da TREND CURVES</span>
+              </h2>
+              <div className="space-y-4 text-white/80 leading-relaxed text-[1.05rem]">
+                <p>
+                  Camila sempre enfrentou dificuldades para encontrar roupas que valorizassem seu corpo. Como mulher
+                  plus size, ela conhecia de perto a frustração de entrar em lojas e não encontrar peças que combinassem
+                  estilo, qualidade e conforto.
+                </p>
+                <p>
+                  Em 2021, decidiu transformar essa dor em propósito. Com uma pequena coleção de 20 peças e muito amor
+                  pela moda, nasceu a TREND CURVES. A missão era clara: criar roupas sofisticadas que celebrassem todas
+                  as curvas, todos os corpos, todas as mulheres.
+                </p>
+                <p>
+                  Hoje, a TREND CURVES já vendeu mais de{" "}
+                  <span className="text-[#c9a36a] font-semibold">2.000 peças</span> para mulheres de todo o Brasil. Cada
+                  venda representa uma mulher que se sentiu linda, confiante e valorizada. E isso, para Camila, não tem
+                  preço.
+                </p>
+                <p className="text-[#c9a36a] italic font-medium">
+                  "Moda não tem tamanho. Tem atitude, tem personalidade, tem história. E toda mulher merece se sentir
+                  incrível exatamente como ela é."
+                </p>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <div className="relative">
+                <div className="absolute inset-0 bg-[#c9a36a] rounded-lg transform rotate-3"></div>
+                <img
+                  src="/professional-portrait-of-confident-plus-size-latin.jpg"
+                  alt="Camila Rodrigues - CEO TREND CURVES"
+                  className="relative rounded-lg shadow-2xl w-full h-[600px] object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-<footer>
-<div class="footer-content">
-<div class="footer-section">
-<h3>Sobre Nós</h3>
-<p>Trend Curves é a marca de moda plus size sofisticada que valoriza cada corpo. Nossa missão é vestir mulheres reais com confiança e estilo.</p>
-</div>
-<div class="footer-section">
-<h3>Contato</h3>
-<p>Email: contato@trendcurves.com</p>
-<p>Telefone: (11) 98765-4321</p>
-<p>Endereço: Rua das Flores, 123, São Paulo - SP</p>
-</div>
-<div class="footer-section">
-<h3>Siga-nos</h3>
-<a href="#">Instagram</a>
-<a href="#">Facebook</a>
-<a href="#">Pinterest</a>
-</div>
-</div>
-<div class="footer-bottom">
-<p>&copy; 2025 Trend Curves. Todos os direitos reservados.</p>
-</div>
-</footer>
+      {/* Returns Modal */}
+      {showReturnsModal && (
+        <div
+          className="fixed inset-0 bg-black/50 z-[2000] flex items-center justify-center p-4"
+          onClick={() => setShowReturnsModal(false)}
+        >
+          <div
+            className="bg-white rounded-sm max-w-2xl w-full p-8 max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-medium text-[#2d2d2d]">Política de Trocas e Devoluções</h2>
+              <button
+                onClick={() => setShowReturnsModal(false)}
+                className="text-[#777] hover:text-[#2d2d2d] text-3xl leading-none"
+              >
+                ×
+              </button>
+            </div>
+            <div className="text-[#555] leading-relaxed space-y-4">
+              <p className="text-lg font-medium text-[#c9a36a]">Prazo de 15 dias para trocas e devoluções</p>
+              <p>
+                Na TREND CURVES, queremos que você fique completamente satisfeita com sua compra. Por isso, oferecemos
+                15 dias corridos a partir do recebimento do produto para solicitar troca ou devolução.
+              </p>
+              <h3 className="font-medium text-[#2d2d2d] mt-6">Condições para troca ou devolução:</h3>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Produto sem uso, com etiquetas originais</li>
+                <li>Embalagem original preservada</li>
+                <li>Nota fiscal incluída</li>
+                <li>Produto sem sinais de lavagem ou alterações</li>
+              </ul>
+              <h3 className="font-medium text-[#2d2d2d] mt-6">Como solicitar:</h3>
+              <p>
+                Entre em contato através do nosso e-mail ou redes sociais informando o número do pedido e o motivo da
+                troca/devolução. Nossa equipe responderá em até 24 horas com as instruções de envio.
+              </p>
+              <p className="text-sm text-[#777] mt-6">
+                * O prazo de 15 dias é contado a partir da data de recebimento do produto. Frete de devolução por conta
+                do cliente, exceto em casos de defeito de fabricação.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
-</body>
-</html>
+      {/* Footer */}
+      <footer className="bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] text-white">
+        {/* Main Footer Content */}
+        <div className="max-w-[1400px] mx-auto py-16 px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div>
+              <h3 className="text-[1.3rem] font-bold tracking-wider mb-6 text-[#c9a36a]">TREND CURVES</h3>
+              <p className="text-white/60 leading-7 text-[0.95rem] mb-6">
+                Moda plus size sofisticada que celebra a beleza autêntica de cada mulher.
+              </p>
+              <div className="flex gap-4">
+                <a
+                  href="#"
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/70 transition-all hover:bg-[#c9a36a] hover:text-white"
+                >
+                  <span className="text-lg">📷</span>
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/70 transition-all hover:bg-[#c9a36a] hover:text-white"
+                >
+                  <span className="text-lg">f</span>
+                </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white/70 transition-all hover:bg-[#c9a36a] hover:text-white"
+                >
+                  <span className="text-lg">P</span>
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="text-[0.95rem] font-semibold mb-6 tracking-wider uppercase text-white/90">Atendimento</h4>
+              <a
+                href="#"
+                className="block text-white/60 no-underline leading-8 text-[0.9rem] transition-colors hover:text-[#c9a36a] hover:translate-x-1"
+              >
+                Central de Ajuda
+              </a>
+              <button
+                onClick={() => setShowReturnsModal(true)}
+                className="block text-white/60 no-underline leading-8 text-[0.9rem] transition-colors hover:text-[#c9a36a] hover:translate-x-1 text-left"
+              >
+                Trocas e Devoluções
+              </button>
+              <a
+                href="#"
+                className="block text-white/60 no-underline leading-8 text-[0.9rem] transition-colors hover:text-[#c9a36a] hover:translate-x-1"
+              >
+                Rastreamento
+              </a>
+            </div>
+
+            <div>
+              <h4 className="text-[0.95rem] font-semibold mb-6 tracking-wider uppercase text-white/90">
+                Institucional
+              </h4>
+              <a
+                href="#"
+                className="block text-white/60 no-underline leading-8 text-[0.9rem] transition-colors hover:text-[#c9a36a] hover:translate-x-1"
+              >
+                Nossa História
+              </a>
+              <a
+                href="#"
+                className="block text-white/60 no-underline leading-8 text-[0.9rem] transition-colors hover:text-[#c9a36a] hover:translate-x-1"
+              >
+                Sustentabilidade
+              </a>
+              <a
+                href="#"
+                className="block text-white/60 no-underline leading-8 text-[0.9rem] transition-colors hover:text-[#c9a36a] hover:translate-x-1"
+              >
+                Guia de Medidas
+              </a>
+              <a
+                href="#"
+                className="block text-white/60 no-underline leading-8 text-[0.9rem] transition-colors hover:text-[#c9a36a] hover:translate-x-1"
+              >
+                Carreiras
+              </a>
+            </div>
+
+            <div>
+              <h4 className="text-[0.95rem] font-semibold mb-6 tracking-wider uppercase text-white/90">
+                Redes Sociais
+              </h4>
+              <a
+                href="#"
+                className="block text-white/60 no-underline leading-8 text-[0.9rem] transition-colors hover:text-[#c9a36a] hover:translate-x-1"
+              >
+                Instagram
+              </a>
+              <a
+                href="#"
+                className="block text-white/60 no-underline leading-8 text-[0.9rem] transition-colors hover:text-[#c9a36a] hover:translate-x-1"
+              >
+                Facebook
+              </a>
+              <a
+                href="#"
+                className="block text-white/60 no-underline leading-8 text-[0.9rem] transition-colors hover:text-[#c9a36a] hover:translate-x-1"
+              >
+                Pinterest
+              </a>
+            </div>
+          </div>
+
+          {/* Payment Methods and Security Badges */}
+          <div className="border-t border-white/10 pt-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {/* Payment Methods */}
+              <div>
+                <h4 className="text-[0.85rem] font-medium mb-5 tracking-widest uppercase text-white/50">
+                  Formas de Pagamento
+                </h4>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <img
+                    src="/visa-card-logo.png"
+                    alt="Visa"
+                    className="h-8 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                  />
+                  <img
+                    src="/mastercard-logo.png"
+                    alt="Mastercard"
+                    className="h-8 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                  />
+                  <img
+                    src="/elo-card-logo.png"
+                    alt="Elo"
+                    className="h-8 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                  />
+                  <img
+                    src="/american-express-logo.png"
+                    alt="American Express"
+                    className="h-8 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                  />
+                  <img
+                    src="/pix-logo-brasil.jpg"
+                    alt="PIX"
+                    className="h-8 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                  />
+                  <img
+                    src="/boleto-bancario-logo.jpg"
+                    alt="Boleto"
+                    className="h-8 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                  />
+                </div>
+              </div>
+
+              {/* Security Badges */}
+              <div>
+                <h4 className="text-[0.85rem] font-medium mb-5 tracking-widest uppercase text-white/50">
+                  Segurança e Certificações
+                </h4>
+                <div className="flex flex-wrap gap-4 items-center">
+                  <div className="flex items-center gap-2 text-white/60 text-sm">
+                    <span className="text-[#c9a36a]">🔒</span>
+                    <span>SSL Seguro</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-white/60 text-sm">
+                    <span className="text-[#c9a36a]">✓</span>
+                    <span>Site Verificado</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-white/60 text-sm">
+                    <span className="text-[#c9a36a]">🛡️</span>
+                    <span>Compra Protegida</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-white/60 text-sm">
+                    <span className="text-[#c9a36a]">✓</span>
+                    <span>Google Safe</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Copyright Bar */}
+        <div className="border-t border-white/10 bg-black/30">
+          <div className="max-w-[1400px] mx-auto py-6 px-12">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-white/40 text-[0.85rem]">
+              <p>© 2021 TREND CURVES. Todos os direitos reservados.</p>
+              <div className="flex gap-6">
+                <a href="#" className="hover:text-[#c9a36a] transition-colors">
+                  Política de Privacidade
+                </a>
+                <a href="#" className="hover:text-[#c9a36a] transition-colors">
+                  Termos de Uso
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
